@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Show</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+
+<body>
+    <div id="wrapper">
+        <div id="container">
+            <div id="header"></div>
+            <div id="content">
+                <div class="xlg_col">
+                    <div class="nav">
+                        <div></div>
+                        <div>
+                            <a href="/shows">TV Shows </a> |
+                            <a href="/logout">Logout</a>
+                        </div>
+                    </div>
+                    <fieldset>
+                        <div class="flex">
+                            <h1>{{show.title}}</h1>
+                            <p>Liked by {{likes_count}}</p>
+                        </div>
+                        <br>
+                        <p>Network: {{show.network}}</p>
+                        <br>
+                        <p>Release Date: {{show.release_date}}</p>
+                        <br>
+                        <p>Description:</p>
+                        <br>
+                        <p>{{show.description}}</p>
+                        <br>
+                        <br>
+                        <p>Posted by {{show.creator.first_name}} {{show.creator.last_name}}</p>
+                    </fieldset>
+                </div>
+            </div>
+            <div id="footer"></div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Shows</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="container">
+            <div id="header"></div>
+            <div id="content">
+                <div class="xlg_col">
+                    <div class="nav">
+                        <h1>Welcome {{user.first_name}}!</h1>
+                        <div>
+                            <a href="/shows/new">+Create</a> |
+                            <a href="/logout">Logout</a>
+                        </div>
+                    </div>
+                    <div class="xlg">
+                        <h2>All TV Shows:</h2>
+                        <table class="table">
+                            <thead>
+                                <th>Title</th>
+                                <th>Network</th>
+                                <th>Release Date</th>
+                                <th>Actions</th>
+                                <th>Like!</th>
+                            </thead>
+                            <tbody>
+                                {% for a_show in shows %}
+                                <tr>
+                                    <td>{{a_show.title}}</td>
+                                    <td>{{a_show.network}}</td>
+                                    <td>{{a_show.release_date}}</td>
+                                    <td><a href="/shows/{{a_show.id}}">Show </a>
+                                        {%if a_show.created_by_id == session['user_id']%}
+                                        | <a href="/shows/edit/{{a_show.id}}">Edit</a> | <a href="/shows/delete/{{a_show.id}}">Delete</a>
+                                        {%else%}
+                                    <td>
+                                        {% if a_show.id in likes and likes[a_show.id] == session['user_id'] %}
+                                        <a href="/shows/unlike/{{ a_show.id }}">Unlike!</a>
+                                        {% else %}
+                                        <a href="/shows/like/{{ a_show.id }}">Like!</a>
+                                        {% endif %}
+                                    </td>
+                                    {%endif%}
+                                    </td>
+                                </tr>
+                                {%endfor%}
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <div id="footer">
+            </div>
+        </div>
+</body>
+
+</html>
